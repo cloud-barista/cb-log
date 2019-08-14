@@ -1,0 +1,23 @@
+#### Config for CB-Logger Lib. ####
+
+output:
+  # S | F | SF
+  # S: Screen
+  # F: File
+  output:SF 
+
+
+## Config for screen Output ##
+stdout:
+  ## InfoLevel | WarnLevel | ErrorLevel
+  loglevel: InfoLevel
+
+
+## Config for File Output ##
+file:
+  filename: ./log/logs.log
+  maxsize: 10 # megabytes
+  maxbackups: 50
+  maxage: 31 # days
+  level: InfoLevle # InfoLevel | WarnLevel | ErrorLevel
+  

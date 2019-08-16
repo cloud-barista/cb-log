@@ -12,7 +12,8 @@ package cblog
 
 import (
 	"os"
-	//"fmt"
+	"fmt"
+	"strings"
 
         "github.com/sirupsen/logrus"
 	"github.com/snowzach/rotatefilehook"
@@ -67,8 +68,6 @@ const (
 )
 ***********/
 
-
-
 // You can set up with Framework Name, a Framework Name is one of loggerName.
 //func (cbLogger CBLogger)GetLogger(loggerName string) *CBLogger {
 func GetLogger(loggerName string) *logrus.Logger {
@@ -91,19 +90,52 @@ func GetLogger(loggerName string) *logrus.Logger {
 
 	// set default config.
 	thisLogger.logrus.SetReportCaller(true)
-	SetLevel(InfoLevel)
+	SetLevel("info")
 	setRotateFileHook(loggerName)
 	setRotateFileHook2(loggerName)
 //fmt.Printf("====> %#v\n", thisLogger.logrus.Hooks.AllLevels())
 	return thisLogger.logrus
 }
 
+func SetLevel(strLevel string) {
+	err := checkLevel(strLevel)
+	if err != nil {
+                logrus.Errorf("Failed to set log level: %v", err)
+	}
+	level, _ := logrus.ParseLevel(strLevel)
+	thisLogger.logrus.SetLevel(level)
+}
+
+func checkLevel(lvl string) (error) {
+	switch strings.ToLower(lvl) {
+	case "error":
+		return nil
+	case "warn", "warning":
+		return nil
+	case "info":
+		return nil
+	}
+	return fmt.Errorf("not a valid cblog Level: %q", lvl)
+}
+
+/* deprecated
 func SetLevel(level Level) {
 	thisLogger.logrus.SetLevel(logrus.Level(level))	
 }
+*/
 
+func GetLevel() string {
+	return thisLogger.logrus.GetLevel().String()
+}
+
+/* deprecated
 func GetLevel() Level {
 	return Level(thisLogger.logrus.GetLevel())
+}
+*/
+
+func (level Level) String() string {
+	return logrus.Level(level).String()
 }
 
 func getFormatter(loggerName string) *cblogformatter.Formatter {

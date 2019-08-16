@@ -55,6 +55,7 @@ func GetLogger(loggerName string) *logrus.Logger {
 
 func setup(loggerName string) {
 	cblogConfig = GetConfigInfos()
+	thisLogger.logrus.SetReportCaller(true)
 
 	if cblogConfig.CBLOG.LOOPCHECK {
 		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
@@ -64,7 +65,6 @@ func setup(loggerName string) {
 	}
 
 	if cblogConfig.CBLOG.LOGFILE {
-		thisLogger.logrus.SetReportCaller(true)
 		setRotateFileHook(loggerName, &cblogConfig)
 	}
 }

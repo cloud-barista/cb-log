@@ -2,13 +2,13 @@
 CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
 
 
-#1.	install CB-Log library pkg
+# 1.	install CB-Log library pkg
   A.	$ go get github.com/cloud-barista/cb-log
 
-#2.	example
+# 2.	example
   A.	https://github.com/cloud-barista/cb-log/blob/master/test/sample.go
 
-#3.	test example
+# 3.	test example
   A.	$ cd test
   B.	$ go run sample.go
       …
@@ -28,6 +28,7 @@ CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:53 sample.go:78, main.createUser2() - finish creating user.
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:53 sample.go:37, main.main() - end.........
       …
+
   C. set Log Level: info => error
     i.	$ vi ../conf/config.yaml
       …

@@ -1,23 +1,18 @@
-#### Config for CB-Logger Lib. ####
+#### Config for CB-Log Lib. ####
 
-output:
-  # S | F | SF
-  # S: Screen
-  # F: File
-  output:SF 
+cblog:
+  ## true | false
+  loopcheck: true # This temp method for development is busy wait. cf) cblogger.go:levelSetupLoop().
 
+  ## info | warn | error
+  loglevel: info # If loopcheck is true, You can set this online.
 
-## Config for screen Output ##
-stdout:
-  ## InfoLevel | WarnLevel | ErrorLevel
-  loglevel: InfoLevel
-
+  ## true | false
+  logfile: false 
 
 ## Config for File Output ##
-file:
-  filename: ./log/logs.log
+logfileinfo:
+  filename: ./log/cblogs.log
   maxsize: 10 # megabytes
   maxbackups: 50
   maxage: 31 # days
-  level: InfoLevle # InfoLevel | WarnLevel | ErrorLevel
-  

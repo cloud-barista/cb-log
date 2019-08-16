@@ -13,6 +13,7 @@ package cblog
 import (
 	"os"
 	"fmt"
+	"time"
 	"strings"
 
         "github.com/sirupsen/logrus"
@@ -30,46 +31,10 @@ var (
 	thisLogger *CBLogger
 	thisFormatter *cblogformatter.Formatter
 	logFilePath string = "./log/logs.log"
+	cblogConfig CBLOGCONFIG
 )
-
-// CB-Log's Logging Level type
-//type Level uint32
-type Level logrus.Level
-
-// CB-Log's logging level to log
-const (
-        ErrorLevel Level = Level(logrus.ErrorLevel)
-        WarnLevel Level = Level(logrus.WarnLevel)
-        InfoLevel Level = Level(logrus.InfoLevel)
-)
-
-
-/*********** ref) logrus's logging level
-// These are the different logging levels. You can set the logging level to log
-const (
-	// PanicLevel level, highest level of severity. Logs and then calls panic with the
-	// message passed to Debug, Info, ...
-	PanicLevel Level = iota
-	// FatalLevel level. Logs and then calls `logger.Exit(1)`. It will exit even if the
-	// logging level is set to Panic.
-	FatalLevel
-	// ErrorLevel level. Logs. Used for errors that should definitely be noted.
-	// Commonly used for hooks to send errors to an error tracking service.
-	ErrorLevel
-	// WarnLevel level. Non-critical entries that deserve eyes.
-	WarnLevel
-	// InfoLevel level. General operational entries about what's going on inside the
-	// application.
-	InfoLevel
-	// DebugLevel level. Usually only enabled when debugging. Very verbose logging.
-	DebugLevel
-	// TraceLevel level. Designates finer-grained informational events than the Debug.
-	TraceLevel
-)
-***********/
 
 // You can set up with Framework Name, a Framework Name is one of loggerName.
-//func (cbLogger CBLogger)GetLogger(loggerName string) *CBLogger {
 func GetLogger(loggerName string) *logrus.Logger {
 	if thisLogger != nil {
 		return thisLogger.logrus
@@ -77,24 +42,59 @@ func GetLogger(loggerName string) *logrus.Logger {
 	thisLogger = new(CBLogger)
 	thisLogger.loggerName = loggerName
 	thisLogger.logrus =  &logrus.Logger{
-        Out:   os.Stderr,
         Level: logrus.DebugLevel,
+        Out:   os.Stderr,
         Hooks: make(logrus.LevelHooks),
         Formatter: getFormatter(loggerName),
-        //Formatter: &cblogformatter.Formatter{
-        //    TimestampFormat: "2006-01-02 15:04:05",
-        //    LogFormat:       "[" + loggerName + "]." + "[%lvl%]: %time% %func% - %msg%\n",
-	//},
 	}
 
-
-	// set default config.
-	thisLogger.logrus.SetReportCaller(true)
-	SetLevel("info")
-	setRotateFileHook(loggerName)
-	setRotateFileHook2(loggerName)
-//fmt.Printf("====> %#v\n", thisLogger.logrus.Hooks.AllLevels())
+	// set config.
+	setup(loggerName)
 	return thisLogger.logrus
+}
+
+func setup(loggerName string) {
+	cblogConfig = GetConfigInfos()
+
+	if cblogConfig.CBLOG.LOOPCHECK {
+		go levelSetupLoop(loggerName)
+	} else {
+		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
+	}
+
+	if cblogConfig.CBLOG.LOGFILE {
+		thisLogger.logrus.SetReportCaller(true)
+		setRotateFileHook(loggerName, &cblogConfig)
+	}
+}
+
+// Now, this method is busy wait. 
+// @TODO must change this  with file watch&event.
+// ref) https://github.com/fsnotify/fsnotify/blob/master/example_test.go
+func levelSetupLoop(loggerName string) {
+	for {
+		cblogConfig = GetConfigInfos()
+		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
+		time.Sleep(time.Second*2)
+	}
+}
+
+func setRotateFileHook(loggerName string, logConfig *CBLOGCONFIG) {
+	level, _ := logrus.ParseLevel(logConfig.CBLOG.LOGLEVEL)
+
+        rotateFileHook, err := rotatefilehook.NewRotateFileHook(rotatefilehook.RotateFileConfig{
+                Filename:   logConfig.LOGFILEINFO.FILENAME,
+                MaxSize:    logConfig.LOGFILEINFO.MAXSIZE, // megabytes
+                MaxBackups: logConfig.LOGFILEINFO.MAXBACKUPS,
+                MaxAge:     logConfig.LOGFILEINFO.MAXAGE, //days
+                Level:      level,
+                Formatter: getFormatter(loggerName),
+        })
+
+        if err != nil {
+                logrus.Fatalf("Failed to initialize file rotate hook: %v", err)
+        }
+        thisLogger.logrus.AddHook(rotateFileHook)
 }
 
 func SetLevel(strLevel string) {
@@ -118,24 +118,8 @@ func checkLevel(lvl string) (error) {
 	return fmt.Errorf("not a valid cblog Level: %q", lvl)
 }
 
-/* deprecated
-func SetLevel(level Level) {
-	thisLogger.logrus.SetLevel(logrus.Level(level))	
-}
-*/
-
 func GetLevel() string {
 	return thisLogger.logrus.GetLevel().String()
-}
-
-/* deprecated
-func GetLevel() Level {
-	return Level(thisLogger.logrus.GetLevel())
-}
-*/
-
-func (level Level) String() string {
-	return logrus.Level(level).String()
 }
 
 func getFormatter(loggerName string) *cblogformatter.Formatter {
@@ -150,56 +134,4 @@ func getFormatter(loggerName string) *cblogformatter.Formatter {
 	return thisFormatter
 }
 
-func setRotateFileHook(loggerName string) {
-        rotateFileHook, err := rotatefilehook.NewRotateFileHook(rotatefilehook.RotateFileConfig{
-                Filename:   logFilePath,
-                //MaxSize:    50, // megabytes
-                MaxSize:    10, // megabytes
-                MaxBackups: 50,
-                MaxAge:     31, //days
-                Level:      logrus.InfoLevel,
-                //Level:      logrus.ErrorLevel,
-                Formatter: getFormatter(loggerName),
-                //Formatter: &logrus.JSONFormatter{
-                //        TimestampFormat: time.RFC822,
-                //},
-                //Formatter: (&logrus.TextFormatter{
-                //        DisableColors:   true,
-                //        ForceColors:   true,
-                //        FullTimestamp: true,
-                //}),
-        })
 
-
-        if err != nil {
-                logrus.Fatalf("Failed to initialize file rotate hook: %v", err)
-        }
-        thisLogger.logrus.AddHook(rotateFileHook)
-}
-
-func setRotateFileHook2(loggerName string) {
-        rotateFileHook, err := rotatefilehook.NewRotateFileHook(rotatefilehook.RotateFileConfig{
-                Filename:   logFilePath+"-2",
-                //MaxSize:    50, // megabytes
-                MaxSize:    10, // megabytes
-                MaxBackups: 50,
-                MaxAge:     31, //days
-                //Level:      logrus.InfoLevel,
-                Level:      logrus.ErrorLevel,
-                Formatter: getFormatter(loggerName),
-                //Formatter: &logrus.JSONFormatter{
-                //        TimestampFormat: time.RFC822,
-                //},
-                //Formatter: (&logrus.TextFormatter{
-                //        DisableColors:   true,
-                //        ForceColors:   true,
-                //        FullTimestamp: true,
-                //}),
-        })
-
-
-        if err != nil {
-                logrus.Fatalf("Failed to initialize file rotate hook: %v", err)
-        }
-        thisLogger.logrus.AddHook(rotateFileHook)
-}

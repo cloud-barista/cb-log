@@ -32,8 +32,7 @@ CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
       …
       
 
-  C. set Log Level: info => error
-  
+  C. set Log Level: info => error   
     i.	$ vi ../conf/config.yaml
     
       …

@@ -10,6 +10,7 @@ CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
 
 # 3.	test example
   A.	$ cd test
+  
   B.	$ go run sample.go
   
       …

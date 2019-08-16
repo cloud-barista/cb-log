@@ -18,17 +18,29 @@ func init() {
 
 func main() {
 
-	fmt.Printf("####LogLevel: %s\n", cblog.GetLevel())
+	fmt.Printf("\n####LogLevel: %s\n", cblog.GetLevel())
 	cblogger.Info("Log Info message")
-	cblogger.Infof("Log Info message:%s", "abc")
-	cblogger.Warningln("Log Waring message")
-	cblogger.Errorln("Log Error message")
+	cblogger.Warning("Log Waring message")
+	cblogger.Error("Log Error message")
+	cblogger.Errorf("Log Error message:%s", errorMsg())
+
+	cblog.SetLevel("warn")
+	fmt.Printf("\n####LogLevel: %s\n", cblog.GetLevel())
+	cblogger.Info("Log Info message")
+	cblogger.Warning("Log Waring message")
+	cblogger.Error("Log Error message")
+	cblogger.Errorf("Log Error message:%s", errorMsg())
 
 	cblog.SetLevel("error")
-	fmt.Printf("####LogLevel: %s\n", cblog.GetLevel())
-
+	fmt.Printf("\n####LogLevel: %s\n", cblog.GetLevel())
 	cblogger.Info("Log Info message")
-	cblogger.Infof("Log Info message:%s", "abc")
-	cblogger.Warningln("Log Waring message")
-	cblogger.Errorln("Log Error message")
+	cblogger.Warning("Log Waring message")
+	cblogger.Error("Log Error message")
+	cblogger.Errorf("Log Error message:%s", errorMsg())
+	
+//	fmt.Printf("===> %#v\n", cblogger.Hooks[0][0])
+}
+
+func errorMsg() error {
+	return fmt.Errorf("internal error message")
 }

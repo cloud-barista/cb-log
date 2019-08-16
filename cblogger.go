@@ -57,6 +57,7 @@ func setup(loggerName string) {
 	cblogConfig = GetConfigInfos()
 
 	if cblogConfig.CBLOG.LOOPCHECK {
+		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
 		go levelSetupLoop(loggerName)
 	} else {
 		SetLevel(cblogConfig.CBLOG.LOGLEVEL)

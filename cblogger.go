@@ -30,7 +30,6 @@ type CBLogger struct {
 var (
 	thisLogger *CBLogger
 	thisFormatter *cblogformatter.Formatter
-	logFilePath string = "./log/logs.log"
 	cblogConfig CBLOGCONFIG
 )
 

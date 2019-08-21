@@ -42,7 +42,7 @@ func load(filePath string) ([]byte, error) {
 
 func GetConfigInfos() CBLOGCONFIG {
         cblogRootPath := os.Getenv("CBLOG_ROOT")
-        data, err := load(cblogRootPath + "/conf/config.yaml")
+        data, err := load(cblogRootPath + "/conf/log_conf.yaml")
 
         if err != nil {
                 log.Fatalf("error: %v", err)

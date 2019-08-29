@@ -25,6 +25,7 @@ func main() {
 		cblogger.Info("start.........")
 
 		err := createUser1("newUser")
+		cblogger.Debug("msg for debugging msg!!")
 		if err != nil {
 			cblogger.Error(err)
 		}
@@ -52,6 +53,7 @@ func createUser1(newUser string) error {
 	}
 	
 	isExist, err := checkUser(newUser)
+	cblogger.Debug("msg for debugging msg!!")
 	if isExist {
 		return err
 	}

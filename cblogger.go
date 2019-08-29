@@ -114,6 +114,8 @@ func checkLevel(lvl string) (error) {
 		return nil
 	case "info":
 		return nil
+	case "debug":
+		return nil
 	}
 	return fmt.Errorf("not a valid cblog Level: %q", lvl)
 }

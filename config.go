@@ -7,7 +7,7 @@
 // ref) https://github.com/go-yaml/yaml/tree/v3
 //	https://godoc.org/gopkg.in/yaml.v3
 //
-// by powerkim@powerkim.co.kr, 2019.08.
+// by CB-Log Team, 2019.08.
 
 
 package cblog

@@ -5,7 +5,7 @@
 // ref) https://github.com/sirupsen/logrus
 // ref) https://github.com/natefinch/lumberjack
 // ref) https://github.com/snowzach/rotatefilehook
-// by powerkim@etri.re.kr, 2019.08.
+// by CB-Log Team, 2019.08.
 
 package cblog
 

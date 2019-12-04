@@ -2,7 +2,7 @@
 //
 //      * Cloud-Barista: https://github.com/cloud-barista
 //
-// by powerkim@etri.re.kr, 2019.08.
+// by CB-Log Team, 2019.08.
 // ref) https://github.com/t-tomalak/logrus-easy-formatter 
 
 package cblogformatter

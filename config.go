@@ -43,6 +43,10 @@ func load(filePath string) ([]byte, error) {
 
 func GetConfigInfos() CBLOGCONFIG {
         cblogRootPath := os.Getenv("CBLOG_ROOT")
+        if cblogRootPath == "" {
+                log.Fatalf("$CBLOG_ROOT is not set!!")
+                os.Exit(1)
+        }
         data, err := load(cblogRootPath + "/conf/log_conf.yaml")
 
         if err != nil {

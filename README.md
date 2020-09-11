@@ -9,13 +9,13 @@ CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
     - error msg: "gosrc/src/go.etcd.io/etcd/vendor/google.golang.org/grpc/clientconn.go:49:2: use of internal package google.golang.org/grpc/internal/resolver/dns not allowed"    
     - sol: $ rm -rf $GOPATH/src/go.etcd.io/etcd/vendor/google.golang.org/grpc
   
-  B.  export CBLOG_ROOT=~/go/src/github.com/cloud-barista/cb-log
+  B.  export CBLOG_ROOT=$GOPATH/src/github.com/cloud-barista/cb-log
     
 # 2.	example
   A.	https://github.com/cloud-barista/cb-log/blob/master/test/sample.go
 
 # 3.	test example
-  A.	$ cd test
+  A.	$ cd $CBLOG_ROOT/test
   
   B.	$ go run sample.go
   

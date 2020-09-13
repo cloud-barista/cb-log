@@ -38,8 +38,8 @@ CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
       …
       
 
-  C. set Log Level: info => error   
-    i.	$ vi ../conf/config.yaml
+  C. set Log Level: `debug` => `error`   
+    i.	$ vi ../conf/log_conf.yaml
     
       …
       [CB-SPIDER].[ERROR]: 2019-08-16 23:22:57 sample.go:69, main.createUser2() - DBMS Session is closed!!

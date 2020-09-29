@@ -58,7 +58,7 @@ func (f *Formatter) Format(entry *logrus.Entry) ([]byte, error) {
 
 	output = strings.Replace(output, "%msg%", entry.Message, 1)
 
-	// Key-Value pair 정보 처리
+	// Key-Value pair 정보 처리 (WithField, WithFields, WithError, ...)
 	if len(entry.Data) > 0 {
 		keyValues := make([]string, 0)
 		for k := range entry.Data {

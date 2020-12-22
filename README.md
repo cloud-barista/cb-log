@@ -6,10 +6,10 @@ CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
 -	$ go get github.com/cloud-barista/cb-log  
 -  export CBLOG_ROOT=$GOPATH/src/github.com/cloud-barista/cb-log
     
-# 2.	example
+## 2.	example
 -	https://github.com/cloud-barista/cb-log/blob/master/test/sample.go
 
-# 3.	test example
+## 3.	test example
 -	$ cd $CBLOG_ROOT/test  
 -	$ go run sample.go
   

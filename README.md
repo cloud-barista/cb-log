@@ -1,15 +1,15 @@
 ## cb-log
 CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
 
-
-## 1.	install CB-Log library pkg
+## How to use CB-Log library in a project WITHOUT `go module`
+### 1. install CB-Log library pkg
 -	$ go get github.com/cloud-barista/cb-log  
 -  export CBLOG_ROOT=$GOPATH/src/github.com/cloud-barista/cb-log
     
-## 2.	example
+### 2. example
 -	https://github.com/cloud-barista/cb-log/blob/master/test/sample.go
 
-## 3.	test example
+### 3. test example
 -	$ cd $CBLOG_ROOT/test  
 -	$ go run sample.go   `# loglevel: debug in $CBLOG_ROOT/conf/log_conf.yaml`
   
@@ -41,4 +41,76 @@ CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
 
       [CB-SPIDER].[ERROR]: 2019-08-16 23:22:59 sample.go:69, main.createUser2() - DBMS Session is closed!!
       ```
+
+## How to use CB-Log library in a project WITH `go module`
+You would not need to install CB-Log by `go get github.com/cloud-barista/cb-log` because of `go module`.
+### 1. Setup log_conf.yaml
+  A.	Make a directory for log_conf.yaml (if necessary)
+  
+  - e.g.) ```mkdir $YOUR_PROJECT_DIRECTORY/configs```
+  
+  B. Create `log_conf.yaml` below
+  ```yaml
+  #### Config for CB-Log Lib. ####
+
+  cblog:
+    ## true | false
+    loopcheck: true # This temp method for development is busy wait. cf) cblogger.go:levelSetupLoop().
+
+    ## debug | info | warn | error
+    loglevel: debug # If loopcheck is true, You can set this online.
+
+    ## true | false
+    logfile: false 
+
+  ## Config for File Output ##
+  logfileinfo:
+    filename: ./log/cblogs.log
+    # filename: $CBLOG_ROOT/log/cblogs.log
+    maxsize: 10 # megabytes
+    maxbackups: 50
+    maxage: 31 # days
+  ```
+  
+  C. Set and input config path
+  ```go
+  var cblogger *logrus.Logger
+
+  func init() {
+    // cblog is a global variable.
+    filePath := filepath.Join("..", "conf", "log_conf.yaml")
+    cblogger = cblog.GetLogger("CB-SPIDER", filePath)
+  }
+  ```
+  
+### 2.	Example
+  A.	https://github.com/cloud-barista/cb-log/blob/master/test/sample-with-config-path.go
+
+### 3.	Test and result
+  A.	$ cd $CBLOG_ROOT/test
+  
+  B.	$ go run sample-with-config-path.go
+  
+      …
+      [CB-SPIDER ..\conf\log_conf.yaml]
+      [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:27, main.main() - start.........
+      [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:48, main.createUser3() - start creating user.
+      [CB-SPIDER].[DEBUG]: 2020-12-23 17:46:09 sample-with-config-path.go:58, main.createUser3() - msg for debugging msg!!
+      [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:63, main.createUser3() - finish creating user.
+      [CB-SPIDER].[DEBUG]: 2020-12-23 17:46:09 sample-with-config-path.go:30, main.main() - msg for debugging msg!!
+      [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:68, main.createUser4() - start creating user.
+      [CB-SPIDER].[ERROR]: 2020-12-23 17:46:09 sample-with-config-path.go:73, main.createUser4() - DBMS Session is closed!!
+      [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:82, main.createUser4() - finish creating user.
+      [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:40, main.main() - end.........
+      …
+      
+
+  C. set Log Level: `debug` => `error`   
+    i.	$ vi ../conf/log_conf.yaml
+    
+      …
+      [CB-SPIDER].[ERROR]: 2020-12-23 18:08:12 sample-with-config-path.go:73, main.createUser4() - DBMS Session is closed!!
+
+      [CB-SPIDER].[ERROR]: 2020-12-23 18:08:14 sample-with-config-path.go:73, main.createUser4() - DBMS Session is closed!!
+      …
 

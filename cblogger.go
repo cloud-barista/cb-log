@@ -32,8 +32,40 @@ var (
 	cblogConfig   CBLOGCONFIG
 )
 
+func parseArgs(args []interface{}) (string, string){
+
+	var loggerName string
+	var configPath string
+
+	for i, arg := range args {
+		switch i {
+		case 0: // name
+			name, ok := arg.(string)
+			if !ok {
+				fmt.Printf("loggerName is not passed as string")
+			}
+			loggerName = name
+		case 1:
+			path, ok := arg.(string)
+			if !ok {
+				fmt.Printf("confgPath is not passed as string")
+			}
+			configPath = path
+		default:
+			fmt.Printf("Wrong parametes passed")
+		}
+	}
+	return loggerName, configPath
+}
+
 // You can set up with Framework Name, a Framework Name is one of loggerName.
-func GetLogger(loggerName string) *logrus.Logger {
+func GetLogger(args ...interface{}) *logrus.Logger {
+
+	// arg[0]: loggerName
+	// arg[1]: configPath
+
+	loggerName, configPath := parseArgs(args)
+
 	if thisLogger != nil {
 		return thisLogger.logrus
 	}
@@ -47,17 +79,17 @@ func GetLogger(loggerName string) *logrus.Logger {
 	}
 
 	// set config.
-	setup(loggerName)
+	setup(loggerName, configPath)
 	return thisLogger.logrus
 }
 
-func setup(loggerName string) {
-	cblogConfig = GetConfigInfos()
+func setup(loggerName string, configPath string) {
+	cblogConfig = GetConfigInfos(configPath)
 	thisLogger.logrus.SetReportCaller(true)
 
 	if cblogConfig.CBLOG.LOOPCHECK {
 		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
-		go levelSetupLoop(loggerName)
+		go levelSetupLoop(loggerName, configPath)
 	} else {
 		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
 	}
@@ -70,9 +102,9 @@ func setup(loggerName string) {
 // Now, this method is busy wait.
 // @TODO must change this  with file watch&event.
 // ref) https://github.com/fsnotify/fsnotify/blob/master/example_test.go
-func levelSetupLoop(loggerName string) {
+func levelSetupLoop(loggerName string, configPath string) {
 	for {
-		cblogConfig = GetConfigInfos()
+		cblogConfig = GetConfigInfos(configPath)
 		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
 		time.Sleep(time.Second * 2)
 	}

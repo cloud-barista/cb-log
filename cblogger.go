@@ -60,15 +60,14 @@ func parseArgs(args []interface{}) (string, string){
 
 // You can set up with Framework Name, a Framework Name is one of loggerName.
 func GetLogger(args ...interface{}) *logrus.Logger {
-
 	// arg[0]: loggerName
 	// arg[1]: configPath
-
-	loggerName, configPath := parseArgs(args)
 
 	if thisLogger != nil {
 		return thisLogger.logrus
 	}
+
+	loggerName, configPath := parseArgs(args)
 	thisLogger = new(CBLogger)
 	thisLogger.loggerName = loggerName
 	thisLogger.logrus = &logrus.Logger{

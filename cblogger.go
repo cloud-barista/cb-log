@@ -10,9 +10,7 @@
 package cblog
 
 import (
-	"fmt"
 	"os"
-	"strings"
 	"time"
 
 	cblogformatter "github.com/cloud-barista/cb-log/formatter"
@@ -110,26 +108,14 @@ func setRotateFileHook(loggerName string, logConfig *CBLOGCONFIG) {
 }
 
 func SetLevel(strLevel string) {
-	err := checkLevel(strLevel)
-	if err != nil {
-		logrus.Errorf("Failed to set log level: %v", err)
-	}
-	level, _ := logrus.ParseLevel(strLevel)
-	thisLogger.logrus.SetLevel(level)
-}
 
-func checkLevel(lvl string) error {
-	switch strings.ToLower(lvl) {
-	case "error":
-		return nil
-	case "warn", "warning":
-		return nil
-	case "info":
-		return nil
-	case "debug":
-		return nil
+	level, err := logrus.ParseLevel(strLevel)
+	if err != nil {
+		thisLogger.logrus.Errorf("Failed to set log level: %v", strLevel)
+		thisLogger.logrus.Info("Set to Debug, the default logging level.")
+		level = logrus.DebugLevel
 	}
-	return fmt.Errorf("not a valid cblog Level: %q", lvl)
+	thisLogger.logrus.SetLevel(level)
 }
 
 func GetLevel() string {

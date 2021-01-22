@@ -43,12 +43,12 @@ func main() {
 	//cblogger.Panicf("Panicf() test: Hello CBLogger from %s", "Cloud-Barista")
 
 	fmt.Printf("\n####LogLevel: %s\n", cblog.GetLevel())
-	// WithField 테스트
-	cblogger.WithField("TestField", "test").Debug("WithField 테스트")
-	// WithFields 테스트
-	cblogger.WithFields(logrus.Fields{"Field1": "value1", "Field2": "value2", "Field3": "value3"}).Debug("WithFields 테스트")
-	// WithError 테스트
-	cblogger.WithError(errors.New("테스트 오류")).Debug("WithError 테스트")
+	// WithField test
+	cblogger.WithField("TestField", "test").Debug("WithField test")
+	// WithFields test
+	cblogger.WithFields(logrus.Fields{"Field1": "value1", "Field2": "value2", "Field3": "value3"}).Debug("WithFields test")
+	// WithError test
+	cblogger.WithError(errors.New("Test-error")).Debug("WithError test")
 
 	//	fmt.Printf("===> %#v\n", cblogger.Hooks[0][0])
 }

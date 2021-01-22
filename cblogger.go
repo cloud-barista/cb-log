@@ -111,8 +111,7 @@ func SetLevel(strLevel string) {
 
 	level, err := logrus.ParseLevel(strLevel)
 	if err != nil {
-		thisLogger.logrus.Errorf("Failed to set log level: %v", strLevel)
-		thisLogger.logrus.Info("Set to Debug, the default logging level.")
+		thisLogger.logrus.Warnf("Not available logging level: %v. Default logging level will be used: debug", strLevel)
 		level = logrus.DebugLevel
 	}
 	thisLogger.logrus.SetLevel(level)

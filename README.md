@@ -1,5 +1,22 @@
 ## cb-log
+[![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/cloud-barista/cb-log?label=go.mod)](https://github.com/cloud-barista/cb-log/blob/master/go.mod)
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/cloud-barista/cb-log@master)&nbsp;&nbsp;&nbsp;
+[![Release Version](https://img.shields.io/github/v/release/cloud-barista/cb-log)](https://github.com/cloud-barista/cb-log/releases)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/cloud-barista/cb-log/blob/master/LICENSE)
+
 CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
+
+
+```
+[NOTE]
+cb-log is currently under development. (the latest version is 0.3.0 espresso)
+So, we do not recommend using the current release in production.
+Please note that the functionalities of cb-log are not stable and secure yet.
+If you have any difficulties in using cb-log, please let us know.
+(Open an issue or Join the cloud-barista Slack)
+```
+***
+
 
 ## How to use CB-Log library in a project WITHOUT `go module`
 ### 1. install CB-Log library pkg

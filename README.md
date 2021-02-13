@@ -30,7 +30,6 @@ If you have any difficulties in using cb-log, please let us know.
 - $ cd $CBLOG_ROOT/test  
 - $ go run sample.go   `# loglevel: debug in $CBLOG_ROOT/conf/log_conf.yaml`
   
-      ```
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:51 sample.go:25, main.main() - start.........
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:51 sample.go:45, main.createUser1() - start creating user.
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:51 sample.go:59, main.createUser1() - finish creating user.
@@ -46,7 +45,6 @@ If you have any difficulties in using cb-log, please let us know.
       [CB-SPIDER].[ERROR]: 2019-08-16 23:22:53 sample.go:69, main.createUser2() - DBMS Session is closed!!
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:53 sample.go:78, main.createUser2() - finish creating user.
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:53 sample.go:37, main.main() - end.........
-      ```
       
 
 - set Log Level: `error`
@@ -109,8 +107,7 @@ You would not need to install CB-Log by `go get github.com/cloud-barista/cb-log`
 - $ cd $CBLOG_ROOT/test
   
 - $ go run sample-with-config-path.go
-  
-      ```
+
       [CB-SPIDER ..\conf\log_conf.yaml]
       [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:27, main.main() - start.........
       [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:48, main.createUser3() - start creating user.
@@ -121,7 +118,7 @@ You would not need to install CB-Log by `go get github.com/cloud-barista/cb-log`
       [CB-SPIDER].[ERROR]: 2020-12-23 17:46:09 sample-with-config-path.go:73, main.createUser4() - DBMS Session is closed!!
       [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:82, main.createUser4() - finish creating user.
       [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:40, main.main() - end.........
-      ```
+      
       
 - set Log Level: `debug` => `error`   
   - $ vi ../conf/log_conf.yaml

@@ -65,7 +65,8 @@ If you have any difficulties in using cb-log, please let us know.
 
 
 - 설정 파일 예시
-  - `$ vi $CBLOG_ROOT/conf/log_conf.yaml`
+  - `$ wget -r -nH --cut-dirs=3 https://raw.githubusercontent.com/cloud-barista/cb-log/master/conf/log_conf.yaml`
+  - `$ vi ./conf/log_conf.yaml`
     ```yaml
     #### Config for CB-Log Lib. ####
 
@@ -86,7 +87,7 @@ If you have any difficulties in using cb-log, please let us know.
       maxbackups: 50
       maxage: 31 # days
     ```
-    
+
 - 설정 적용 방법
   - 서버 재가동: loopcheck=false 설정시
   - 자동 반영: loopcheck=true 설정시

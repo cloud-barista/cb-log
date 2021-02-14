@@ -41,7 +41,7 @@ If you have any difficulties in using cb-log, please let us know.
 - cb-log 설치 방법
   - 모듈 다운로드 방법(Go Module mode, default)
     - cb-log 응용 개발
-      - 응용 예시: wget https://raw.githubusercontent.com/cloud-barista/cb-log/master/test/test.go
+      - 응용 예시: `$ wget https://raw.githubusercontent.com/cloud-barista/cb-log/master/test/test.go`
     - 모듈 초기화: `$ go mod init test.go`
     - 모듈 다운로드: `$ go mod tidy`
     - 다운로드 위치 예시: `/home/ubuntu/go/pkg/mod/github.com/cloud-barista/cb-log@v0.2.9`

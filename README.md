@@ -40,7 +40,8 @@ If you have any difficulties in using cb-log, please let us know.
   ```
 - cb-log 설치 방법
   - 모듈 다운로드 방법(Go Module mode, default): nothing to do
-  - 소스 다운로드 방법(Old GOPATH mode): `go get -u -v github.com/cloud-barista/cb-log`
+  - 소스 다운로드 방법(Old GOPATH mode):
+    - `$ go get -u -v github.com/cloud-barista/cb-log`
 
 #### [설정 방법]
 - 설정 정보

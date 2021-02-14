@@ -55,7 +55,7 @@ If you have any difficulties in using cb-log, please let us know.
   | Configurations | Descriptions          | Default |
   |:-------------:|:--------------|:-------------|
   | loopcheck | 설정값 변경시 자동 반영 여부 설정. <br>설정값: true, false | false |
-  | loglevel | 로그 레벨 설정. <br>설정값: trace, debug, info, warn, error, fatal, panic | error |
+  | loglevel | 로그 레벨 설정. <br>설정값: trace, debug, info, warn, error, fatal, panic | info |
   | logfile | 로그 파일 출력 여부 설정. <br>설정값: true, false | true |
   | logfileinfo: | ----- 이하 logfile true 일때 유효 ----- ||
   | filename | 로그를 저장할 파일 path 및 이름. <br>설정값: {path}logfilename | ./log/cblogs.log |

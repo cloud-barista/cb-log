@@ -39,9 +39,15 @@ If you have any difficulties in using cb-log, please let us know.
   $ sudo snap install go --classic
   ```
 - cb-log 설치 방법
-  - 모듈 다운로드 방법(Go Module mode, default): nothing to do
+  - 모듈 다운로드 방법(Go Module mode, default)
+    - cb-log 응용 개발
+      - 응용 예시: wget https://raw.githubusercontent.com/cloud-barista/cb-log/master/test/test.go
+    - 모듈 초기화: `$ go mod init test.go`
+    - 모듈 다운로드: `$ go mod tidy`
+    - 다운로드 위치 예시: `/home/ubuntu/go/pkg/mod/github.com/cloud-barista/cb-log@v0.2.9`
   - 소스 다운로드 방법(Old GOPATH mode):
-    - `$ go get -u -v github.com/cloud-barista/cb-log`
+    - 소스 다운로드: `$ go get -u -v github.com/cloud-barista/cb-log`
+    - 다운로드 위치 예시: `/home/ubuntu/go/src/github.com/cloud-barista/cb-log`
 
 #### [설정 방법]
 - 설정 정보

@@ -4,8 +4,7 @@
 [![Release Version](https://img.shields.io/github/v/release/cloud-barista/cb-log)](https://github.com/cloud-barista/cb-log/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/cloud-barista/cb-log/blob/master/LICENSE)
 
-CB-Log is the logger library for the Cloud-Barista Multi-Cloud Framework.
-
+cb-log is a logger library for the Cloud-Barista Multi-Cloud Framework.
 
 ```
 [NOTE]
@@ -17,18 +16,132 @@ If you have any difficulties in using cb-log, please let us know.
 ```
 ***
 
+#### [목    차]
 
-## How to use CB-Log library in a project WITHOUT `go module`
-### 1. install CB-Log library pkg
-- $ go get github.com/cloud-barista/cb-log  
-- export CBLOG_ROOT=$GOPATH/src/github.com/cloud-barista/cb-log
+1. [실행 환경](#실행-환경)
+2. [설치 방법](#설치-방법)
+3. [설정 방법](#설정-방법)
+4. [활용 예시](#활용-예시)
+ 
+***
+
+#### [실행 환경]
+
+- 배포환경: Ubuntu 18.04, Docker 19.03, Go 1.15
+- 개발환경: Ubuntu 20.04, Ubuntu 18.04, Debian 10.6, macOS Catalina 10.15, Android 8.1
+  - latest Docker, latest Go
+
+#### [설치 방법]
+- Go 설치
+  ```
+  $ sudo apt update
+  $ sudo apt install -y make gcc
+  $ sudo snap install go --classic
+  ```
+- cb-log 설치
+  - 모듈 다운로드 방법(Go Module mode, default): nothing to do
+  - 소스 다운로드 방법(Old GOPATH mode): `go get -u -v github.com/cloud-barista/cb-log`
+
+#### [설정 방법]
+- 설정 정보
+
+  | Configurations | Descriptions          | Default |
+  |:-------------:|:--------------|:-------------|
+  | loopcheck | 설정값 변경시 자동 반영 여부 설정. <br>설정값: true, false | false |
+  | loglevel | 로그 레벨 설정. <br>설정값: trace, debug, info, warn, error, fatal, panic | error |
+  | logfile | 로그 파일 출력 여부 설정. <br>설정값: true, false | true |
+  | logfileinfo: | ----- 이하 logfile true 일때 유효 ----- ||
+  | filename | 로그를 저장할 파일 path 및 이름. <br>설정값: {path}logfilename | ./log/cblogs.log |
+  | maxsize | 개별 로그 파일 크기. <br>설정값: integer #megabytes | 10 |
+  | maxbackups | 로그 파일 개수. <br>설정값: integer #number  | 50 |
+  | maxage | 로그 파일 유지 기간. <br>설정값: integer #days  | 31 |
+
+
+- 설정 파일 예시
+
+    ```yaml
+    $ vi $CBLOG_ROOT/conf/log_conf.yaml
+
+    #### Config for CB-Log Lib. ####
+
+    cblog:
+      ## true | false
+      loopcheck: false # This temp method for development is busy wait. cf) cblogger.go:levelSetupLoop().
+
+      ## trace | debug | info | warn/warning | error | fatal | panic
+      loglevel: error # If loopcheck is true, You can set this online.
+
+      ## true | false
+      logfile: true
+
+    ## Config for File Output ##
+    logfileinfo:
+      filename: ./log/cblogs.log
+      maxsize: 10 # megabytes
+      maxbackups: 50
+      maxage: 31 # days
+    ```
     
-### 2. example
-- https://github.com/cloud-barista/cb-log/blob/master/test/sample.go
+- 설정파일 위치 지정 방법
+  - 환경변수 사용 방법: 
+    - 환경변수 CBLOG_ROOT 설정: `(ex) export CBLOG_ROOT=$HOME/go/src/github.com/cloud-barista/cb-log`
+    - 설정파일 위치: $CBLOG_ROOT/conf/log_conf.yaml
+  - 설정파일 지정 방법: 
+    - 설정파일 생성: `(ex) /etc/my_conf.yaml`
+    - 코드내 설정파일 위치 설정
 
-### 3. test example
-- $ cd $CBLOG_ROOT/test  
-- $ go run sample.go   `# loglevel: debug in $CBLOG_ROOT/conf/log_conf.yaml`
+      ```go
+      import (
+        "github.com/cloud-barista/cb-log"
+        "github.com/sirupsen/logrus"
+      )
+      
+      var cblogger *logrus.Logger
+
+      func init() {
+        // cblog is a global variable.
+        cblogger = cblog.GetLoggerWithConfigPath("MY_PROJ", "/etc/my_conf.yaml")
+      }
+      ```
+
+#### [활용 예시]
+- 기본 사용 예시: GetLogger(), SetLevel(), GetLevel(), WithFields()
+  - 대상 소스: https://github.com/cloud-barista/cb-log/blob/master/test/test.go
+  - 실행 및 결과:
+      ```
+      $ export CBLOG_ROOT=$HOME/go/src/github.com/cloud-barista/cb-log
+      $ cd $CBLOG_ROOT/test
+      $ go run test.go   # setup cb-log with $CBLOG_ROOT/conf/log_conf.yaml
+    
+      ####LogLevel: info
+      [CB-SPIDER].[INFO]: 2021-02-14 11:16:49 test.go:24, main.main() - Log Info message
+      [CB-SPIDER].[WARNING]: 2021-02-14 11:16:49 test.go:25, main.main() - Log Waring message
+      [CB-SPIDER].[ERROR]: 2021-02-14 11:16:49 test.go:26, main.main() - Log Error message
+      [CB-SPIDER].[ERROR]: 2021-02-14 11:16:49 test.go:27, main.main() - Log Error message:internal error message
+
+      ####LogLevel: warning
+      [CB-SPIDER].[WARNING]: 2021-02-14 11:16:49 test.go:32, main.main() - Log Waring message
+      [CB-SPIDER].[ERROR]: 2021-02-14 11:16:49 test.go:33, main.main() - Log Error message
+      [CB-SPIDER].[ERROR]: 2021-02-14 11:16:49 test.go:34, main.main() - Log Error message:internal error message
+
+      ####LogLevel: error
+      [CB-SPIDER].[ERROR]: 2021-02-14 11:16:49 test.go:40, main.main() - Log Error message
+      [CB-SPIDER].[ERROR]: 2021-02-14 11:16:49 test.go:41, main.main() - Log Error message:internal error message
+
+      ####LogLevel: debug
+      [CB-SPIDER].[DEBUG]: 2021-02-14 11:16:49 test.go:46, main.main() - WithField 테스트 	[TestField=test]
+      [CB-SPIDER].[DEBUG]: 2021-02-14 11:16:49 test.go:48, main.main() - WithFields 테스트 	[Field2=value2,Field3=value3,Field1=value1]
+      [CB-SPIDER].[DEBUG]: 2021-02-14 11:16:49 test.go:50, main.main() - WithError 테스트 	[error=테스트 오류]
+
+- 활용 예시: DBMS 응용 로그 예시
+  - 설정파일 환경변수 지정 방법
+    - 환경변수 설정: `export CBLOG_ROOT=$HOME/go/src/github.com/cloud-barista/cb-log`
+    - 대상 소스: https://github.com/cloud-barista/cb-log/blob/master/test/sample.go
+    - 실행 및 결과
+      ```
+      $ export CBLOG_ROOT=$HOME/go/src/github.com/cloud-barista/cb-log   
+      $ cd $CBLOG_ROOT/test  
+      $ go run sample.go   # setup cb-log with $CBLOG_ROOT/conf/log_conf.yaml
   
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:51 sample.go:25, main.main() - start.........
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:51 sample.go:45, main.createUser1() - start creating user.
@@ -45,68 +158,23 @@ If you have any difficulties in using cb-log, please let us know.
       [CB-SPIDER].[ERROR]: 2019-08-16 23:22:53 sample.go:69, main.createUser2() - DBMS Session is closed!!
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:53 sample.go:78, main.createUser2() - finish creating user.
       [CB-SPIDER].[INFO]: 2019-08-16 23:22:53 sample.go:37, main.main() - end.........
-      
-
-- set Log Level: `error`
-  -	$ vi $CBLOG_ROOT/conf/log_conf.yaml
-      <br>`loglevel: debug` => `loglevel: error`  
-    
       ```
-      [CB-SPIDER].[ERROR]: 2019-08-16 23:22:57 sample.go:69, main.createUser2() - DBMS Session is closed!!
 
+    - Log Level 변경 및 실행 결과: `debug` => `error`   
+      ```
+      $ cd $CBLOG_ROOT/test
+      $ vi $CBLOG_ROOT/conf/log_conf.yaml  ## debug => error
+      $ go run sample.go   # setup cb-log with a user defined configuration file in code
+      [CB-SPIDER].[ERROR]: 2019-08-16 23:22:57 sample.go:69, main.createUser2() - DBMS Session is closed!!
       [CB-SPIDER].[ERROR]: 2019-08-16 23:22:59 sample.go:69, main.createUser2() - DBMS Session is closed!!
       ```
 
-## How to use CB-Log library in a project WITH `go module`
-You would not need to install CB-Log by `go get github.com/cloud-barista/cb-log` because of `go module`.
-### 1. Setup log_conf.yaml
-- Make a directory for log_conf.yaml (if necessary)
-  
-  - e.g.) ```mkdir $YOUR_PROJECT_DIRECTORY/configs```
-  
-- Create `log_conf.yaml` below
-
-  ```yaml
-  #### Config for CB-Log Lib. ####
-
-  cblog:
-    ## true | false
-    loopcheck: true # This temp method for development is busy wait. cf) cblogger.go:levelSetupLoop().
-
-    ## debug | info | warn | error
-    loglevel: debug # If loopcheck is true, You can set this online.
-
-    ## true | false
-    logfile: false 
-
-  ## Config for File Output ##
-  logfileinfo:
-    filename: ./log/cblogs.log
-    # filename: $CBLOG_ROOT/log/cblogs.log
-    maxsize: 10 # megabytes
-    maxbackups: 50
-    maxage: 31 # days
-  ```
-  
-- Set and input config path
-
-  ```go
-  var cblogger *logrus.Logger
-
-  func init() {
-    // cblog is a global variable.
-    filePath := filepath.Join("..", "conf", "log_conf.yaml")
-    cblogger = cblog.GetLogger("CB-SPIDER", filePath)
-  }
-  ```
-  
-### 2. Example
-- https://github.com/cloud-barista/cb-log/blob/master/test/sample-with-config-path.go
-
-### 3. Test and result
-- $ cd $CBLOG_ROOT/test
-  
-- $ go run sample-with-config-path.go
+  - 설정파일 지정 방법: GetLoggerWithConfigPath()
+    - 대상 소스: https://github.com/cloud-barista/cb-log/blob/master/test/sample-with-config-path.go
+    - 실행 및 결과
+      ```
+      $ cd ./test
+      $ go run sample-with-config-path.go   # setup cb-log with a user defined configuration file in code
 
       [CB-SPIDER ..\conf\log_conf.yaml]
       [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:27, main.main() - start.........
@@ -118,14 +186,14 @@ You would not need to install CB-Log by `go get github.com/cloud-barista/cb-log`
       [CB-SPIDER].[ERROR]: 2020-12-23 17:46:09 sample-with-config-path.go:73, main.createUser4() - DBMS Session is closed!!
       [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:82, main.createUser4() - finish creating user.
       [CB-SPIDER].[INFO]: 2020-12-23 17:46:09 sample-with-config-path.go:40, main.main() - end.........
-      
-      
-- set Log Level: `debug` => `error`   
-  - $ vi ../conf/log_conf.yaml
-    
       ```
+      
+    - Log Level 변경 및 실행 결과: `debug` => `error`   
+      ```
+      $ cd ./test
+      $ vi ../conf/log_conf.yaml  ## debug => error
+      $ go run sample-with-config-path.go   # setup cb-log with a user defined configuration file in code
       [CB-SPIDER].[ERROR]: 2020-12-23 18:08:12 sample-with-config-path.go:73, main.createUser4() - DBMS Session is closed!!
-
       [CB-SPIDER].[ERROR]: 2020-12-23 18:08:14 sample-with-config-path.go:73, main.createUser4() - DBMS Session is closed!!
       ```
-
+      

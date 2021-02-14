@@ -65,10 +65,8 @@ If you have any difficulties in using cb-log, please let us know.
 
 
 - 설정 파일 예시
-
+  - `$ vi $CBLOG_ROOT/conf/log_conf.yaml`
     ```yaml
-    $ vi $CBLOG_ROOT/conf/log_conf.yaml
-
     #### Config for CB-Log Lib. ####
 
     cblog:
@@ -99,7 +97,7 @@ If you have any difficulties in using cb-log, please let us know.
     - 설정파일 위치: $CBLOG_ROOT/conf/log_conf.yaml
   - 설정파일 지정 방법: 
     - 설정파일 생성: `(ex) /etc/my_conf.yaml`
-    - 코드내 설정파일 위치 설정
+    - 코드 내 설정파일 위치 설정: GetLoggerWithConfigPath() 이용
 
       ```go
       import (

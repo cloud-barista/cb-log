@@ -82,6 +82,10 @@ If you have any difficulties in using cb-log, please let us know.
       maxage: 31 # days
     ```
     
+- 설정 적용 방법
+  - 서버 재가동: loopcheck=false 설정시
+  - 자동 반영: loopcheck=true 설정시
+
 - 설정파일 위치 지정 방법
   - 환경변수 사용 방법: 
     - 환경변수 CBLOG_ROOT 설정: `(ex) export CBLOG_ROOT=$HOME/go/src/github.com/cloud-barista/cb-log`

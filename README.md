@@ -38,7 +38,7 @@ If you have any difficulties in using cb-log, please let us know.
   $ sudo apt install -y make gcc
   $ sudo snap install go --classic
   ```
-- cb-log 설치
+- cb-log 설치 방법
   - 모듈 다운로드 방법(Go Module mode, default): nothing to do
   - 소스 다운로드 방법(Old GOPATH mode): `go get -u -v github.com/cloud-barista/cb-log`
 

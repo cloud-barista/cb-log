@@ -1,6 +1,6 @@
 ## cb-log
 [![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/cloud-barista/cb-log?label=go.mod)](https://github.com/cloud-barista/cb-log/blob/master/go.mod)
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/github.com/cloud-barista/cb-log@master)&nbsp;&nbsp;&nbsp;
+[![GoDoc](https://godoc.org/github.com/cloud-barista/cb-log?status.svg)](https://pkg.go.dev/github.com/cloud-barista/cb-log@master)&nbsp;&nbsp;&nbsp;
 [![Release Version](https://img.shields.io/github/v/release/cloud-barista/cb-log)](https://github.com/cloud-barista/cb-log/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/cloud-barista/cb-log/blob/master/LICENSE)
 

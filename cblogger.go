@@ -49,10 +49,10 @@ func getLoggerHandler(loggerName string, configFilePath string) *logrus.Logger {
 		if loggerName != "" {
 			thisLogger.loggerName = loggerName
 			thisLogger.logrus.SetFormatter(getFormatter(loggerName))
-			setup(loggerName, configFilePath)
 		}
 		return thisLogger.logrus
 	}
+
 	thisLogger = new(CBLogger)
 	thisLogger.loggerName = loggerName
 	thisLogger.logrus = &logrus.Logger{
@@ -127,6 +127,11 @@ func GetLevel() string {
 }
 
 func getFormatter(loggerName string) *cblogformatter.Formatter {
+
+	if thisFormatter != nil {
+		thisFormatter.LogFormat = "[" + loggerName + "]." + "[%lvl%]: %time% %func% - %msg% \t[%keyvalues%]\n"
+		return thisFormatter
+	}
 
 	// 출력 포맷 조정 (keyvalues) 추가 (Formatter.go에서 해당 위치에 실제 데이터로 변경)
 	thisFormatter = &cblogformatter.Formatter{

@@ -135,7 +135,7 @@ func getFormatter(loggerName string) *cblogformatter.Formatter {
 
 	// 출력 포맷 조정 (keyvalues) 추가 (Formatter.go에서 해당 위치에 실제 데이터로 변경)
 	thisFormatter = &cblogformatter.Formatter{
-		TimestampFormat: "2006-01-02 15:04:05",
+		TimestampFormat: "2006-01-02 15:04:05.0000",
 		LogFormat:       "[" + loggerName + "]." + "[%lvl%]: %time% %func% - %msg% \t[%keyvalues%]\n",
 	}
 

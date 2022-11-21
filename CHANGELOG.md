@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.7.0 (Cortado, 2022.11.25.)
+- To match the Cloud-Barista Release Version
+
 ## v0.6.0 (Cafe Latte, 2022.07.08.)
 
 ## v0.5.0 (Affogato, 2021.12.16.)

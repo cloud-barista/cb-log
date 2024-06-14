@@ -36,6 +36,21 @@ type CBLOGCONFIG struct {
 	}
 }
 
+func NewCBLOGCONFIG() CBLOGCONFIG {
+    config := CBLOGCONFIG{}
+
+    config.CBLOG.LOOPCHECK = false
+    config.CBLOG.LOGLEVEL = "info"
+    config.CBLOG.LOGFILE = true
+
+    config.LOGFILEINFO.FILENAME = "logfile.log"
+    config.LOGFILEINFO.MAXSIZE = 10        // in MB
+    config.LOGFILEINFO.MAXBACKUPS = 5
+    config.LOGFILEINFO.MAXAGE = 31         // in days
+
+    return config
+}
+
 func load(filePath string) ([]byte, error) {
 	data, err := ioutil.ReadFile(filePath)
 	return data, err
@@ -43,7 +58,12 @@ func load(filePath string) ([]byte, error) {
 
 func GetConfigInfos(configFilePath string) CBLOGCONFIG {
 	var filePath string
+
 	cblogRootPath := os.Getenv("CBLOG_ROOT")
+	if cblogRootPath == "" {
+	    log.Printf("CBLOG_ROOT is not set. Using default configurations")
+	    return NewCBLOGCONFIG()
+	}
 
 	if cblogRootPath == "" && configFilePath == "" {
 		log.Fatalf("Both $CBLOG_ROOT and configPath are not set!!")

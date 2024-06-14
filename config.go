@@ -43,7 +43,7 @@ func NewCBLOGCONFIG() CBLOGCONFIG {
     config.CBLOG.LOGLEVEL = "info"
     config.CBLOG.LOGFILE = true
 
-    config.LOGFILEINFO.FILENAME = "logfile.log"
+    config.LOGFILEINFO.FILENAME = "./log/cblogs.log"
     config.LOGFILEINFO.MAXSIZE = 10        // in MB
     config.LOGFILEINFO.MAXBACKUPS = 5
     config.LOGFILEINFO.MAXAGE = 31         // in days

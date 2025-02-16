@@ -9,6 +9,11 @@ cblog:
   loglevel: info # If loopcheck is true, You can set this online.
 
   ## true | false
+  ## If true, log output to console.
+  ## Default output to console: true
+  console: true
+
+  ## true | false
   logfile: true 
 
 ## Config for File Output ##

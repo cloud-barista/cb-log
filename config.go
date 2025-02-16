@@ -25,6 +25,7 @@ type CBLOGCONFIG struct {
 	CBLOG struct {
 		LOOPCHECK bool
 		LOGLEVEL  string
+		CONSOLE   bool
 		LOGFILE   bool
 	}
 
@@ -37,18 +38,19 @@ type CBLOGCONFIG struct {
 }
 
 func NewCBLOGCONFIG() CBLOGCONFIG {
-    config := CBLOGCONFIG{}
+	config := CBLOGCONFIG{}
 
-    config.CBLOG.LOOPCHECK = false
-    config.CBLOG.LOGLEVEL = "info"
-    config.CBLOG.LOGFILE = true
+	config.CBLOG.LOOPCHECK = false
+	config.CBLOG.LOGLEVEL = "info"
+	config.CBLOG.CONSOLE = true
+	config.CBLOG.LOGFILE = true
 
-    config.LOGFILEINFO.FILENAME = "./log/cblogs.log"
-    config.LOGFILEINFO.MAXSIZE = 10        // in MB
-    config.LOGFILEINFO.MAXBACKUPS = 5
-    config.LOGFILEINFO.MAXAGE = 31         // in days
+	config.LOGFILEINFO.FILENAME = "./log/cblogs.log"
+	config.LOGFILEINFO.MAXSIZE = 10 // in MB
+	config.LOGFILEINFO.MAXBACKUPS = 5
+	config.LOGFILEINFO.MAXAGE = 31 // in days
 
-    return config
+	return config
 }
 
 func load(filePath string) ([]byte, error) {
@@ -61,8 +63,8 @@ func GetConfigInfos(configFilePath string) CBLOGCONFIG {
 
 	cblogRootPath := os.Getenv("CBLOG_ROOT")
 	if cblogRootPath == "" {
-	    log.Printf("CBLOG_ROOT is not set. Using default configurations")
-	    return NewCBLOGCONFIG()
+		log.Printf("CBLOG_ROOT is not set. Using default configurations")
+		return NewCBLOGCONFIG()
 	}
 
 	if cblogRootPath == "" && configFilePath == "" {
@@ -81,12 +83,11 @@ func GetConfigInfos(configFilePath string) CBLOGCONFIG {
 		log.Fatalf("error: %v", err)
 	}
 
-	configInfos := CBLOGCONFIG{}
+	configInfos := NewCBLOGCONFIG()
 	err = yaml.Unmarshal([]byte(data), &configInfos)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
-
 	configInfos.LOGFILEINFO.FILENAME = ReplaceEnvPath(configInfos.LOGFILEINFO.FILENAME)
 	return configInfos
 }

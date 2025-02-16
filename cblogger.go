@@ -76,6 +76,16 @@ func setup(loggerName string, configFilePath string) {
 	if cblogConfig.CBLOG.LOGFILE {
 		setRotateFileHook(loggerName, &cblogConfig)
 	}
+
+	if !cblogConfig.CBLOG.CONSOLE {
+		devNull, err := os.OpenFile(os.DevNull, os.O_WRONLY, 0)
+		if err != nil {
+			logrus.Fatalf("Failed to open os.DevNull: %v", err)
+		}
+		thisLogger.logrus.SetOutput(devNull)
+	} else {
+		thisLogger.logrus.SetOutput(os.Stderr)
+	}
 }
 
 // Now, this method is busy wait.
@@ -126,7 +136,6 @@ func getFormatter(loggerName string) *cblogformatter.Formatter {
 	if thisFormatter != nil {
 		return thisFormatter
 	}
-	// 출력 포맷 조정 (keyvalues) 추가 (Formatter.go에서 해당 위치에 실제 데이터로 변경)
 	thisFormatter = &cblogformatter.Formatter{
 		TimestampFormat: "2006-01-02 15:04:05",
 		LogFormat:       "[" + loggerName + "]." + "[%lvl%]: %time% %func% - %msg% \t[%keyvalues%]\n",

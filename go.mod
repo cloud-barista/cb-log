@@ -3,7 +3,7 @@ module github.com/cloud-barista/cb-log
 go 1.25.0
 
 require (
-	github.com/sirupsen/logrus v1.9.0
+	github.com/sirupsen/logrus v1.9.1
 	github.com/snowzach/rotatefilehook v0.0.0-20220211133110-53752135082d
 	gopkg.in/yaml.v3 v3.0.1
 )

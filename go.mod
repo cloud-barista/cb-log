@@ -15,3 +15,7 @@ require (
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
+
+retract (
+    v0.11.0 // fsnotify watcher crashes on atomic file saves; use v0.12.0+
+)

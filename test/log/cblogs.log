@@ -1,0 +1,451 @@
+[CB-SPIDER].[INFO]: 2026-03-20 11:58:19 test.go:24, main.main() - Log Info message 
+[CB-SPIDER].[WARNING]: 2026-03-20 11:58:19 test.go:25, main.main() - Log Waring message 
+[CB-SPIDER].[ERROR]: 2026-03-20 11:58:19 test.go:26, main.main() - Log Error message 
+[CB-SPIDER].[ERROR]: 2026-03-20 11:58:19 test.go:27, main.main() - Log Error message:internal error message 
+[CB-SPIDER].[WARNING]: 2026-03-20 11:58:19 test.go:32, main.main() - Log Waring message 
+[CB-SPIDER].[ERROR]: 2026-03-20 11:58:19 test.go:33, main.main() - Log Error message 
+[CB-SPIDER].[ERROR]: 2026-03-20 11:58:19 test.go:34, main.main() - Log Error message:internal error message 
+[CB-SPIDER].[ERROR]: 2026-03-20 11:58:19 test.go:40, main.main() - Log Error message 
+[CB-SPIDER].[ERROR]: 2026-03-20 11:58:19 test.go:41, main.main() - Log Error message:internal error message 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:22 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:22 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:22 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:22 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:22 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:22 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:22 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:24 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:24 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:24 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:24 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:24 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:24 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:24 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:26 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:26 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:26 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:26 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:26 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:26 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:26 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:28 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:28 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:28 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:28 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:28 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:28 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:28 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:30 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:30 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:30 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:30 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:30 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:30 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:30 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:32 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:32 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:32 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:32 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:32 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:32 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:32 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:34 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:34 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:34 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:34 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:34 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:34 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:34 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:36 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:36 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:36 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:36 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:36 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:36 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:36 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:38 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:38 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:38 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:38 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:38 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:38 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:38 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:40 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:40 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:40 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:40 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:40 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:40 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:40 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:42 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:42 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:42 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:42 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:42 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:42 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:42 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:44 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:44 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:44 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:44 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:44 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:44 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:44 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:46 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:46 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:46 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:46 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:46 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:46 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:46 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:48 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:48 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:48 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:48 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:48 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:48 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:48 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:50 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:50 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:50 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:50 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:50 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:50 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:50 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:52 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:52 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:52 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:52 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:52 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:52 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:52 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:54 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:54 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:54 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:54 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:54 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:54 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:54 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:56 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:56 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:56 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:56 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:56 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:56 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:56 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:58 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:58 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:58 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:58 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:03:58 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:58 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:03:58 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:00 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:00 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:00 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:00 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:00 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:00 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:00 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:02 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:02 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:02 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:02 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:02 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:02 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:02 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:04 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:04 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:04 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:04 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:04 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:04 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:04 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:06 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:08 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:10 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:12 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:14 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:16 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:18 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:20 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:22 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:24 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:24 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:24 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:24 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:24 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:24 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:24 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:26 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:26 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:26 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:26 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:26 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:26 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:26 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:28 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:28 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:28 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:28 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:28 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:28 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:28 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:30 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:30 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:30 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:30 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:30 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:30 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:30 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:32 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:32 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:32 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:32 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:32 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:32 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:32 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:34 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:34 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:34 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:34 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:34 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:34 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:34 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:36 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:36 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:36 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:36 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:36 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:36 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:36 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:38 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:38 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:38 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:38 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:38 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:38 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:38 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:40 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:40 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:40 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:40 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:40 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:40 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:40 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:42 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:42 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:42 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:42 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:42 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:42 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:42 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:44 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:44 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:44 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:44 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:44 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:44 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:44 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:46 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:46 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:46 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:46 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:46 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:46 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:46 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:48 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:48 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:48 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:48 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:48 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:48 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:48 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:50 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:50 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:50 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:50 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:50 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:50 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:50 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:52 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:52 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:52 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:52 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:52 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:52 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:52 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:54 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:54 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:54 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:54 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:54 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:54 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:54 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:56 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:56 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:56 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:56 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:56 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:56 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:56 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:58 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:58 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:58 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:58 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:04:58 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:58 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:04:58 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:00 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:00 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:00 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:00 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:05:00 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:00 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:00 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:02 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:02 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:02 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:02 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:05:02 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:02 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:02 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:04 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:04 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:04 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:04 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:05:04 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:04 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:04 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:06 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:06 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:06 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:06 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:05:06 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:06 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:06 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:08 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:08 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:08 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:08 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:05:08 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:08 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 12:05:08 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:07 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:09 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:11 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:13 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:15 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:17 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:19 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:21 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:23 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:25 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:27 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:29 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:31 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:33 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:35 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:37 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:39 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:41 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:43 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:45 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:47 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:49 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:51 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:53 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:55 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:57 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:14:59 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:01 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:03 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:05 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:07 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:09 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:11 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:13 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:15 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:17 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:19 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:21 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:23 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:25 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:27 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:29 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:31 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:33 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:35 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:37 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:39 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:41 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:43 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:45 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:47 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:49 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:51 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:53 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:55 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:57 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:15:59 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:01 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:03 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:05 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:07 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:09 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:11 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:13 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:15 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:17 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:19 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:21 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:23 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:25 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:27 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:29 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:31 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:33 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:35 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:37 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:39 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:41 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:43 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:45 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:47 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:49 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:51 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:53 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:16:55 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:33 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:35 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:37 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:39 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:41 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:43 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:45 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:47 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:49 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:51 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:53 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:55 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:56 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:56 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:56 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:56 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 15:07:56 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:56 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:56 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:58 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:58 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:58 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:58 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 15:07:58 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:58 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:07:58 sample.go:38, main.main() - end......... 
+[CB-SPIDER].[INFO]: 2026-03-20 15:08:00 sample.go:25, main.main() - start......... 
+[CB-SPIDER].[INFO]: 2026-03-20 15:08:00 sample.go:46, main.createUser1() - start creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:08:00 sample.go:61, main.createUser1() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:08:00 sample.go:66, main.createUser2() - start creating user. 
+[CB-SPIDER].[ERROR]: 2026-03-20 15:08:00 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[INFO]: 2026-03-20 15:08:00 sample.go:80, main.createUser2() - finish creating user. 
+[CB-SPIDER].[INFO]: 2026-03-20 15:08:00 sample.go:38, main.main() - end......... 

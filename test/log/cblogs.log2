@@ -1,0 +1,5 @@
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:57 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:18:59 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:19:01 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:19:03 sample.go:71, main.createUser2() - DBMS Session is closed!! 
+[CB-SPIDER].[ERROR]: 2026-03-20 12:19:05 sample.go:71, main.createUser2() - DBMS Session is closed!! 

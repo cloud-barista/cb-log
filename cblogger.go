@@ -10,6 +10,7 @@
 package cblog
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 
@@ -29,6 +30,7 @@ var (
 	thisLogger    *CBLogger
 	thisFormatter *cblogformatter.Formatter
 	cblogConfig   CBLOGCONFIG
+	watcherCancel context.CancelFunc // stops the background watcher goroutine
 )
 
 // Get the logger with name you set. The name will be used as below (name: CB-SPIDER)
@@ -68,7 +70,9 @@ func setup(loggerName string, configFilePath string) {
 	thisLogger.logrus.SetReportCaller(true)
 
 	SetLevel(cblogConfig.CBLOG.LOGLEVEL)
-	go levelSetupWatcher(loggerName, configFilePath)
+	ctx, cancel := context.WithCancel(context.Background())
+	watcherCancel = cancel
+	go levelSetupWatcher(ctx, loggerName, configFilePath)
 
 	if cblogConfig.CBLOG.LOGFILE {
 		setRotateFileHook(loggerName, &cblogConfig)
@@ -87,8 +91,9 @@ func setup(loggerName string, configFilePath string) {
 
 // levelSetupWatcher watches the config file for changes using fsnotify
 // and updates the log level whenever the file is modified.
+// It stops when ctx is cancelled.
 // ref) https://github.com/fsnotify/fsnotify/blob/master/example_test.go
-func levelSetupWatcher(loggerName string, configFilePath string) {
+func levelSetupWatcher(ctx context.Context, loggerName string, configFilePath string) {
 	// Resolve the config file path the same way GetConfigInfos does.
 	watchPath := configFilePath
 	if watchPath == "" {
@@ -117,21 +122,21 @@ func levelSetupWatcher(loggerName string, configFilePath string) {
 
 	for {
 		select {
+		case <-ctx.Done():
+			return
 		case event, ok := <-watcher.Events:
 			if !ok {
 				return
 			}
 			if event.Has(fsnotify.Write) || event.Has(fsnotify.Create) {
-				cblogConfig = GetConfigInfos(configFilePath)
-				SetLevel(cblogConfig.CBLOG.LOGLEVEL)
+				reloadConfig(configFilePath)
 			}
 			// Re-add the watch when the file is renamed/removed (e.g. atomic saves by vim/emacs).
 			if event.Has(fsnotify.Rename) || event.Has(fsnotify.Remove) {
 				if err := watcher.Add(watchPath); err != nil {
 					logrus.Errorf("[cb-log] Failed to re-watch config file %s: %v", watchPath, err)
 				}
-				cblogConfig = GetConfigInfos(configFilePath)
-				SetLevel(cblogConfig.CBLOG.LOGLEVEL)
+				reloadConfig(configFilePath)
 			}
 		case err, ok := <-watcher.Errors:
 			if !ok {
@@ -140,6 +145,12 @@ func levelSetupWatcher(loggerName string, configFilePath string) {
 			logrus.Errorf("[cb-log] File watcher error: %v", err)
 		}
 	}
+}
+
+// reloadConfig re-reads the config file and applies the new log level.
+func reloadConfig(configFilePath string) {
+	cblogConfig = GetConfigInfos(configFilePath)
+	SetLevel(cblogConfig.CBLOG.LOGLEVEL)
 }
 
 func setRotateFileHook(loggerName string, logConfig *CBLOGCONFIG) {

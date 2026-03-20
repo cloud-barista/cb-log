@@ -23,10 +23,9 @@ import (
 
 type CBLOGCONFIG struct {
 	CBLOG struct {
-		LOOPCHECK bool
-		LOGLEVEL  string
-		CONSOLE   bool
-		LOGFILE   bool
+		LOGLEVEL string
+		CONSOLE  bool
+		LOGFILE  bool
 	}
 
 	LOGFILEINFO struct {
@@ -40,7 +39,6 @@ type CBLOGCONFIG struct {
 func NewCBLOGCONFIG() CBLOGCONFIG {
 	config := CBLOGCONFIG{}
 
-	config.CBLOG.LOOPCHECK = false
 	config.CBLOG.LOGLEVEL = "info"
 	config.CBLOG.CONSOLE = true
 	config.CBLOG.LOGFILE = true

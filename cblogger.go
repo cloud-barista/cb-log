@@ -67,12 +67,8 @@ func setup(loggerName string, configFilePath string) {
 	cblogConfig = GetConfigInfos(configFilePath)
 	thisLogger.logrus.SetReportCaller(true)
 
-	if cblogConfig.CBLOG.LOOPCHECK {
-		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
-		go levelSetupWatcher(loggerName, configFilePath)
-	} else {
-		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
-	}
+	SetLevel(cblogConfig.CBLOG.LOGLEVEL)
+	go levelSetupWatcher(loggerName, configFilePath)
 
 	if cblogConfig.CBLOG.LOGFILE {
 		setRotateFileHook(loggerName, &cblogConfig)
@@ -103,7 +99,7 @@ func levelSetupWatcher(loggerName string, configFilePath string) {
 	}
 
 	if watchPath == "" {
-		logrus.Warn("[cb-log] LOOPCHECK is enabled but no config file path could be determined; file watcher will not start.")
+		logrus.Warn("[cb-log] No config file path could be determined; file watcher will not start.")
 		return
 	}
 
@@ -131,7 +127,9 @@ func levelSetupWatcher(loggerName string, configFilePath string) {
 			}
 			// Re-add the watch when the file is renamed/removed (e.g. atomic saves by vim/emacs).
 			if event.Has(fsnotify.Rename) || event.Has(fsnotify.Remove) {
-				_ = watcher.Add(watchPath)
+				if err := watcher.Add(watchPath); err != nil {
+					logrus.Errorf("[cb-log] Failed to re-watch config file %s: %v", watchPath, err)
+				}
 				cblogConfig = GetConfigInfos(configFilePath)
 				SetLevel(cblogConfig.CBLOG.LOGLEVEL)
 			}

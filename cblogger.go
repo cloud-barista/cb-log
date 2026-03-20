@@ -11,9 +11,10 @@ package cblog
 
 import (
 	"os"
-	"time"
+	"path/filepath"
 
 	cblogformatter "github.com/cloud-barista/cb-log/formatter"
+	"github.com/fsnotify/fsnotify"
 	"github.com/sirupsen/logrus"
 	"github.com/snowzach/rotatefilehook"
 )
@@ -68,7 +69,7 @@ func setup(loggerName string, configFilePath string) {
 
 	if cblogConfig.CBLOG.LOOPCHECK {
 		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
-		go levelSetupLoop(loggerName, configFilePath)
+		go levelSetupWatcher(loggerName, configFilePath)
 	} else {
 		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
 	}
@@ -88,14 +89,58 @@ func setup(loggerName string, configFilePath string) {
 	}
 }
 
-// Now, this method is busy wait.
-// @TODO must change this  with file watch&event.
+// levelSetupWatcher watches the config file for changes using fsnotify
+// and updates the log level whenever the file is modified.
 // ref) https://github.com/fsnotify/fsnotify/blob/master/example_test.go
-func levelSetupLoop(loggerName string, configFilePath string) {
+func levelSetupWatcher(loggerName string, configFilePath string) {
+	// Resolve the config file path the same way GetConfigInfos does.
+	watchPath := configFilePath
+	if watchPath == "" {
+		cblogRootPath := os.Getenv("CBLOG_ROOT")
+		if cblogRootPath != "" {
+			watchPath = filepath.Join(cblogRootPath, "conf", "log_conf.yaml")
+		}
+	}
+
+	if watchPath == "" {
+		logrus.Warn("[cb-log] LOOPCHECK is enabled but no config file path could be determined; file watcher will not start.")
+		return
+	}
+
+	watcher, err := fsnotify.NewWatcher()
+	if err != nil {
+		logrus.Errorf("[cb-log] Failed to create file watcher: %v", err)
+		return
+	}
+	defer watcher.Close()
+
+	if err := watcher.Add(watchPath); err != nil {
+		logrus.Errorf("[cb-log] Failed to watch config file %s: %v", watchPath, err)
+		return
+	}
+
 	for {
-		cblogConfig = GetConfigInfos(configFilePath)
-		SetLevel(cblogConfig.CBLOG.LOGLEVEL)
-		time.Sleep(time.Second * 2)
+		select {
+		case event, ok := <-watcher.Events:
+			if !ok {
+				return
+			}
+			if event.Has(fsnotify.Write) || event.Has(fsnotify.Create) {
+				cblogConfig = GetConfigInfos(configFilePath)
+				SetLevel(cblogConfig.CBLOG.LOGLEVEL)
+			}
+			// Re-add the watch when the file is renamed/removed (e.g. atomic saves by vim/emacs).
+			if event.Has(fsnotify.Rename) || event.Has(fsnotify.Remove) {
+				_ = watcher.Add(watchPath)
+				cblogConfig = GetConfigInfos(configFilePath)
+				SetLevel(cblogConfig.CBLOG.LOGLEVEL)
+			}
+		case err, ok := <-watcher.Errors:
+			if !ok {
+				return
+			}
+			logrus.Errorf("[cb-log] File watcher error: %v", err)
+		}
 	}
 }
 

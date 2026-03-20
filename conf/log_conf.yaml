@@ -2,7 +2,7 @@
 
 cblog:
   ## true | false
-  loopcheck: false # This temp method for development is busy wait. cf) cblogger.go:levelSetupLoop().
+  loopcheck: false # If true, the logger watches the config file for changes and updates the log level dynamically.
 
   ## trace | debug | info | warn/warning | error | fatal | panic
   ## Default logging level: info

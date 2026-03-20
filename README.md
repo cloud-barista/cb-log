@@ -54,7 +54,6 @@ If you have any difficulties in using cb-log, please let us know.
 
   | Configurations | Descriptions          | Default |
   |:-------------:|:--------------|:-------------|
-  | loopcheck | 설정값 변경시 자동 반영 여부 설정. <br>설정값: true, false | false |
   | loglevel | 로그 레벨 설정. <br>설정값: trace, debug, info, warn, error, fatal, panic | info |
   | logfile | 로그 파일 출력 여부 설정. <br>설정값: true, false | true |
   | logfileinfo: | ----- 이하 logfile true 일때 유효 ----- ||
@@ -71,11 +70,8 @@ If you have any difficulties in using cb-log, please let us know.
     #### Config for CB-Log Lib. ####
 
     cblog:
-      ## true | false
-      loopcheck: false # This temp method for development is busy wait. cf) cblogger.go:levelSetupLoop().
-
       ## trace | debug | info | warn/warning | error | fatal | panic
-      loglevel: error # If loopcheck is true, You can set this online.
+      loglevel: error # The log level can be changed dynamically by editing this file.
 
       ## true | false
       logfile: true
@@ -89,8 +85,7 @@ If you have any difficulties in using cb-log, please let us know.
     ```
 
 - 설정 적용 방법
-  - 서버 재가동: loopcheck=false 설정시
-  - 자동 반영: loopcheck=true 설정시
+  - 자동 반영: 설정 파일 수정시 즉시 반영 (파일 변경 이벤트 감지)
 
 - 설정파일 위치 지정 방법
   - 환경변수 사용 방법: 

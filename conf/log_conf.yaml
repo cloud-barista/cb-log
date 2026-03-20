@@ -1,12 +1,9 @@
 #### Config for cb-log Lib. ####
 
 cblog:
-  ## true | false
-  loopcheck: false # This temp method for development is busy wait. cf) cblogger.go:levelSetupLoop().
-
   ## trace | debug | info | warn/warning | error | fatal | panic
   ## Default logging level: info
-  loglevel: info # If loopcheck is true, You can set this online.
+  loglevel: info # The log level can be changed dynamically by editing this file.
 
   ## true | false
   ## If true, log output to console.

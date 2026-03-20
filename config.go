@@ -5,123 +5,158 @@
 // load and set config file
 //
 // ref) https://github.com/go-yaml/yaml/tree/v3
-//	https://godoc.org/gopkg.in/yaml.v3
+//https://godoc.org/gopkg.in/yaml.v3
 //
 // by CB-Log Team, 2019.08.
 
 package cblog
 
 import (
-	"io/ioutil"
-	"log"
-	"os"
-	"path/filepath"
-	"strings"
+"fmt"
+"io/ioutil"
+"log"
+"os"
+"path/filepath"
+"strings"
 
-	"gopkg.in/yaml.v3"
+"gopkg.in/yaml.v3"
 )
 
 type CBLOGCONFIG struct {
-	CBLOG struct {
-		LOGLEVEL string
-		CONSOLE  bool
-		LOGFILE  bool
-	}
+CBLOG struct {
+LOGLEVEL string
+CONSOLE  bool
+LOGFILE  bool
+}
 
-	LOGFILEINFO struct {
-		FILENAME   string
-		MAXSIZE    int
-		MAXBACKUPS int
-		MAXAGE     int
-	}
+LOGFILEINFO struct {
+FILENAME   string
+MAXSIZE    int
+MAXBACKUPS int
+MAXAGE     int
+}
 }
 
 func NewCBLOGCONFIG() CBLOGCONFIG {
-	config := CBLOGCONFIG{}
+config := CBLOGCONFIG{}
 
-	config.CBLOG.LOGLEVEL = "info"
-	config.CBLOG.CONSOLE = true
-	config.CBLOG.LOGFILE = true
+config.CBLOG.LOGLEVEL = "info"
+config.CBLOG.CONSOLE = true
+config.CBLOG.LOGFILE = true
 
-	config.LOGFILEINFO.FILENAME = "./log/cblogs.log"
-	config.LOGFILEINFO.MAXSIZE = 10 // in MB
-	config.LOGFILEINFO.MAXBACKUPS = 5
-	config.LOGFILEINFO.MAXAGE = 31 // in days
+config.LOGFILEINFO.FILENAME = "./log/cblogs.log"
+config.LOGFILEINFO.MAXSIZE = 10 // in MB
+config.LOGFILEINFO.MAXBACKUPS = 5
+config.LOGFILEINFO.MAXAGE = 31 // in days
 
-	return config
+return config
 }
 
 func load(filePath string) ([]byte, error) {
-	data, err := ioutil.ReadFile(filePath)
-	return data, err
+data, err := ioutil.ReadFile(filePath)
+return data, err
 }
 
+// GetConfigInfos reads the configuration from the given path (or $CBLOG_ROOT/conf/log_conf.yaml).
+// It calls log.Fatalf on error and is intended for initial startup only.
 func GetConfigInfos(configFilePath string) CBLOGCONFIG {
-	var filePath string
+var filePath string
 
-	cblogRootPath := os.Getenv("CBLOG_ROOT")
-	if cblogRootPath == "" {
-		log.Printf("CBLOG_ROOT is not set. Using default configurations")
-		return NewCBLOGCONFIG()
-	}
+cblogRootPath := os.Getenv("CBLOG_ROOT")
+if cblogRootPath == "" {
+log.Printf("CBLOG_ROOT is not set. Using default configurations")
+return NewCBLOGCONFIG()
+}
 
-	if cblogRootPath == "" && configFilePath == "" {
-		log.Fatalf("Both $CBLOG_ROOT and configPath are not set!!")
-	}
+if cblogRootPath == "" && configFilePath == "" {
+log.Fatalf("Both $CBLOG_ROOT and configPath are not set!!")
+}
 
-	if cblogRootPath != "" {
-		filePath = filepath.Join(cblogRootPath, "conf", "log_conf.yaml")
-	} else {
-		filePath = configFilePath
-	}
+if cblogRootPath != "" {
+filePath = filepath.Join(cblogRootPath, "conf", "log_conf.yaml")
+} else {
+filePath = configFilePath
+}
 
-	data, err := load(filePath)
+data, err := load(filePath)
 
-	if err != nil {
-		log.Fatalf("error: %v", err)
-	}
+if err != nil {
+log.Fatalf("error: %v", err)
+}
 
-	configInfos := NewCBLOGCONFIG()
-	err = yaml.Unmarshal([]byte(data), &configInfos)
-	if err != nil {
-		log.Fatalf("error: %v", err)
-	}
-	configInfos.LOGFILEINFO.FILENAME = ReplaceEnvPath(configInfos.LOGFILEINFO.FILENAME)
-	return configInfos
+configInfos := NewCBLOGCONFIG()
+err = yaml.Unmarshal([]byte(data), &configInfos)
+if err != nil {
+log.Fatalf("error: %v", err)
+}
+configInfos.LOGFILEINFO.FILENAME = ReplaceEnvPath(configInfos.LOGFILEINFO.FILENAME)
+return configInfos
+}
+
+// GetConfigInfosSafe is like GetConfigInfos but returns an error instead of
+// calling log.Fatalf. This is used for runtime config reloads where a
+// transient failure (e.g. file not yet available during atomic save) should
+// not terminate the process.
+func GetConfigInfosSafe(configFilePath string) (CBLOGCONFIG, error) {
+var filePath string
+
+cblogRootPath := os.Getenv("CBLOG_ROOT")
+if cblogRootPath == "" && configFilePath == "" {
+return NewCBLOGCONFIG(), fmt.Errorf("both $CBLOG_ROOT and configPath are not set")
+}
+
+if cblogRootPath != "" {
+filePath = filepath.Join(cblogRootPath, "conf", "log_conf.yaml")
+} else {
+filePath = configFilePath
+}
+
+data, err := load(filePath)
+if err != nil {
+return cblogConfig, fmt.Errorf("failed to read config file %s: %w", filePath, err)
+}
+
+configInfos := NewCBLOGCONFIG()
+err = yaml.Unmarshal([]byte(data), &configInfos)
+if err != nil {
+return cblogConfig, fmt.Errorf("failed to parse config file %s: %w", filePath, err)
+}
+configInfos.LOGFILEINFO.FILENAME = ReplaceEnvPath(configInfos.LOGFILEINFO.FILENAME)
+return configInfos, nil
 }
 
 // $ABC/def ==> /abc/def
 func ReplaceEnvPath(str string) string {
-	if strings.Index(str, "$") == -1 {
-		return str
-	}
+if strings.Index(str, "$") == -1 {
+return str
+}
 
-	// ex) input "$CBSTORE_ROOT/meta_db/dat"
-	strList := strings.Split(str, "/")
-	for n, one := range strList {
-		if strings.Index(one, "$") != -1 {
-			cbstoreRootPath := os.Getenv(strings.Trim(one, "$"))
-			if cbstoreRootPath == "" {
-				log.Fatal(one + " is not set!")
-			}
-			strList[n] = cbstoreRootPath
-		}
-	}
+// ex) input "$CBSTORE_ROOT/meta_db/dat"
+strList := strings.Split(str, "/")
+for n, one := range strList {
+if strings.Index(one, "$") != -1 {
+cbstoreRootPath := os.Getenv(strings.Trim(one, "$"))
+if cbstoreRootPath == "" {
+log.Fatal(one + " is not set!")
+}
+strList[n] = cbstoreRootPath
+}
+}
 
-	var resultStr string
-	for _, one := range strList {
-		resultStr = resultStr + one + "/"
-	}
-	// ex) "/root/go/src/github.com/cloud-barista/cb-spider/meta_db/dat/"
-	resultStr = strings.TrimRight(resultStr, "/")
-	resultStr = strings.ReplaceAll(resultStr, "//", "/")
-	return resultStr
+var resultStr string
+for _, one := range strList {
+resultStr = resultStr + one + "/"
+}
+// ex) "/root/go/src/github.com/cloud-barista/cb-spider/meta_db/dat/"
+resultStr = strings.TrimRight(resultStr, "/")
+resultStr = strings.ReplaceAll(resultStr, "//", "/")
+return resultStr
 }
 
 func GetConfigString(configInfos *CBLOGCONFIG) string {
-	d, err := yaml.Marshal(configInfos)
-	if err != nil {
-		log.Fatalf("error: %v", err)
-	}
-	return string(d)
+d, err := yaml.Marshal(configInfos)
+if err != nil {
+log.Fatalf("error: %v", err)
+}
+return string(d)
 }

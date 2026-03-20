@@ -177,3 +177,89 @@ logfileinfo:
 		t.Errorf("after file update: expected level 'error', got '%s'", got)
 	}
 }
+
+// TestDynamicLevelChange_AtomicSave verifies that the watcher survives an
+// atomic save (remove old file + create new file), which is the default
+// behaviour of many editors (vim, emacs) and tools (sed -i).
+func TestDynamicLevelChange_AtomicSave(t *testing.T) {
+resetGlobals()
+defer resetGlobals()
+
+const initialYAML = `
+cblog:
+  loglevel: info
+  console: false
+  logfile: false
+logfileinfo:
+  filename: ./log/test.log
+  maxsize: 5
+  maxbackups: 2
+  maxage: 7
+`
+dir, cfgPath := writeConfig(t, initialYAML)
+t.Setenv("CBLOG_ROOT", dir)
+
+logger := GetLogger("TEST-ATOMIC")
+if logger == nil {
+t.Fatal("expected non-nil logger")
+}
+if got := GetLevel(); got != "info" {
+t.Fatalf("initial level: expected 'info', got '%s'", got)
+}
+
+// Give the watcher goroutine time to start.
+time.Sleep(300 * time.Millisecond)
+
+// Simulate atomic save: remove old file, then write new file.
+if err := os.Remove(cfgPath); err != nil {
+t.Fatalf("Remove: %v", err)
+}
+
+// Brief pause to simulate the gap between remove and recreate.
+time.Sleep(50 * time.Millisecond)
+
+const updatedYAML = `
+cblog:
+  loglevel: debug
+  console: false
+  logfile: false
+logfileinfo:
+  filename: ./log/test.log
+  maxsize: 5
+  maxbackups: 2
+  maxage: 7
+`
+if err := os.WriteFile(cfgPath, []byte(updatedYAML), 0644); err != nil {
+t.Fatalf("WriteFile: %v", err)
+}
+
+// Allow up to 3 s for the watcher to pick up the change.
+deadline := time.Now().Add(3 * time.Second)
+for time.Now().Before(deadline) {
+if GetLevel() == "debug" {
+break
+}
+time.Sleep(100 * time.Millisecond)
+}
+
+if got := GetLevel(); got != "debug" {
+t.Errorf("after atomic save: expected level 'debug', got '%s'", got)
+}
+}
+
+// TestGetConfigInfosSafe_MissingFile verifies that GetConfigInfosSafe returns
+// an error (instead of calling log.Fatalf) when the config file does not exist.
+func TestGetConfigInfosSafe_MissingFile(t *testing.T) {
+dir := t.TempDir()
+t.Setenv("CBLOG_ROOT", dir)
+// conf/ directory exists but the file does not.
+confDir := filepath.Join(dir, "conf")
+if err := os.MkdirAll(confDir, 0755); err != nil {
+t.Fatalf("MkdirAll: %v", err)
+}
+
+_, err := GetConfigInfosSafe("")
+if err == nil {
+t.Fatal("expected error for missing config file, got nil")
+}
+}
